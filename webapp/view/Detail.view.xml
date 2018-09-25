@@ -1,0 +1,58 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:vbm="sap.ui.vbm" xmlns:vk="sap.ui.vk" xmlns:l="sap.ui.layout" controllerName="ClinicalTrials.ClinicalTrials.controller.Detail"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+    <Page title="{i18n&gt;Detail Information}" showNavButton="true" navButtonPress="doNavBack">
+        <ObjectHeader title="{nct_id}">
+            <attributes>
+                <ObjectAttribute text="{brief_title}" />
+                <ObjectAttribute text="{url}" />
+            </attributes>
+        </ObjectHeader>
+        <vbm:GeoMap id="vbi" width="100%" height="80%" centerPosition="{position}" zoomlevel="4">
+            <vbm:vos>
+                <vbm:Spots items="{/modelData1/0/Spots}">
+                    <vbm:items>
+                        <vbm:Spot position="{pos}" tooltip="{tooltip}" type="Success" select="{select}" selectColor="RHLSA(0;1.0;3.0;1.0)"></vbm:Spot>
+                    </vbm:items>
+                </vbm:Spots>
+            </vbm:vos>
+        </vbm:GeoMap>
+        <IconTabBar expanded="{device&gt;/isNoPhone}">
+            <items>
+                <IconTabFilter icon="sap-icon://supplier">
+                    <form:SimpleForm id="UserForm0" minWidth="1024">
+                        <core:Title text="Detail Information" />
+                        <Label text="Country" />
+                        <Text text="{country}" />
+                        <Label text="Official Title" />
+                        <Text text="{official_title}" />
+                        <Label text="Detailed Description" />
+                        <Text text="{detailed_description}" />
+                        <Label text="Last Update" />
+                        <Text text="{last_update_submitted}" />
+                        <Label text="Contact" />
+                        <Text text="{last_name}" />
+                        <Label text="Phone" />
+                        <Text text="{phone}" />
+                        <Label text="Email" />
+                        <Text text="{email}" />
+                    </form:SimpleForm>
+                </IconTabFilter>
+                 <IconTabFilter icon="sap-icon://supplier">
+                    <form:SimpleForm id="UserForm1" minWidth="1024">
+                        <core:Title text="Eligibility Criteria" />
+                        <Label text="Eligibility" />
+                        <Text text="{eligibility/criteria/textblock}" />
+                        <Label text="Gender" />
+                        <Text text="{eligibility/gender}" />
+                        <Label text="Minimum Age" />
+                        <Text text="{eligibility/minimum_age}" />
+                        <Label text="Maximum Age" />
+                        <Text text="{eligibility/maximum_age}" />
+                        <Label text="Healthy Volunteers" />
+                        <Text text="{eligibility/healthy_volunteers}" />
+                    </form:SimpleForm>
+                </IconTabFilter>
+            </items>
+        </IconTabBar>
+    </Page>
+</mvc:View>
